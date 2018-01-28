@@ -2,8 +2,7 @@
 
 namespace PackageGeneratorDrupal;
 
-class DrupalCoreStrictBuilder extends DrupalPackageBuilder
-{
+class DrupalCoreStrictBuilder extends DrupalPackageBuilder {
 
   protected $defaultMetadata = [
     'name' => 'webflo/drupal-core-strict',
@@ -12,8 +11,7 @@ class DrupalCoreStrictBuilder extends DrupalPackageBuilder
     'license' => 'GPL-2.0-or-later',
   ];
 
-  public function getPackage()
-  {
+  public function getPackage() {
     $composer = $this->defaultMetadata;
 
     if (isset($this->composerLock['packages'])) {

@@ -7,8 +7,7 @@ use Gitonomy\Git\Reference\Branch;
 use Gitonomy\Git\Reference\Tag;
 use PackageGenerator\BuilderInterface;
 
-abstract class DrupalPackageBuilder implements BuilderInterface
-{
+abstract class DrupalPackageBuilder implements BuilderInterface {
 
   /**
    * @var string
@@ -30,23 +29,23 @@ abstract class DrupalPackageBuilder implements BuilderInterface
    */
   protected $gitObject;
 
-  public function __construct(array $composerJson, array $composerLock, Reference $gitObject)
-  {
+  public function __construct(array $composerJson, array $composerLock, Reference $gitObject) {
     $this->composerJson = $composerJson;
     $this->composerLock = $composerLock;
     $this->gitObject = $gitObject;
 
     if ($this->gitObject instanceof Branch) {
       $this->referenceName = str_replace('origin/', '', $this->gitObject->getName());
-    } elseif ($this->gitObject instanceof Tag) {
+    }
+    elseif ($this->gitObject instanceof Tag) {
       $this->referenceName = $this->gitObject->getName();
-    } else {
+    }
+    else {
       throw new \LogicException("gitObject should be Branch or Tag");
     }
   }
 
-  public function getCommitMessage()
-  {
+  public function getCommitMessage() {
     $msg[] = "Update composer.json ({$this->referenceName})";
     $msg[] = '';
     $msg[] = 'Reference: http://cgit.drupalcode.org/drupal/commit/?id=' . $this->gitObject->getCommitHash();
@@ -54,8 +53,7 @@ abstract class DrupalPackageBuilder implements BuilderInterface
     return implode("\n", $msg);
   }
 
-  public function packageToVersion(array $package)
-  {
+  public function packageToVersion(array $package) {
     if (substr($package['version'], 0, 4) == 'dev-') {
       return $package['version'] . '#' . $package['source']['reference'];
     }
