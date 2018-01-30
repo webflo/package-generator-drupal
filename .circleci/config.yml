@@ -1,0 +1,15 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.1
+    branches:
+      only:
+        - master
+    steps:
+      - checkout
+      - run: git config --global user.name "Florian Weber (via CircleCI)"
+      - run: git config --global user.email "florian@webflo.org"
+      - run: composer install -n --prefer-dist
+      - run: ./vendor/bin/robo generate packages.yml
