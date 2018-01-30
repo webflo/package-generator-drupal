@@ -11,5 +11,5 @@ jobs:
       - checkout
       - run: git config --global user.name "Florian Weber (via CircleCI)"
       - run: git config --global user.email "florian@webflo.org"
-      - run: composer install -n --prefer-dist
+      - run: composer install --no-interaction --no-progress
       - run: ./vendor/bin/robo generate packages.yml
