@@ -1,6 +1,6 @@
 packages:
   webflo/drupal-core-strict:
-    source: https://git.drupal.org/project/drupal.git
+    source: https://git.drupalcode.org/project/drupal.git
     target: https://github.com/webflo/drupal-core-strict.git
     git:
       author:
@@ -8,7 +8,7 @@ packages:
         email: florian@webflo.org
     builder: \PackageGeneratorDrupal\DrupalCoreStrictBuilder
   webflo/drupal-core-require-dev:
-    source: https://git.drupal.org/project/drupal.git
+    source: https://git.drupalcode.org/project/drupal.git
     target: https://github.com/webflo/drupal-core-require-dev.git
     git:
       author:
