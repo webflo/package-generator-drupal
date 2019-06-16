@@ -6,6 +6,7 @@ use Gitonomy\Git\Reference;
 use Gitonomy\Git\Reference\Branch;
 use Gitonomy\Git\Reference\Tag;
 use PackageGenerator\BuilderInterface;
+use Gitonomy\Git\Repository;
 
 abstract class DrupalPackageBuilder implements BuilderInterface {
 
@@ -29,10 +30,22 @@ abstract class DrupalPackageBuilder implements BuilderInterface {
    */
   protected $gitObject;
 
-  public function __construct(array $composerJson, array $composerLock, Reference $gitObject) {
+  /**
+   * @var array
+   */
+  protected $config;
+
+  /**
+   * @var Repository
+   */
+  protected $metapackage_repository;
+
+  public function __construct(array $composerJson, array $composerLock, Reference $gitObject, array $config, Repository $metapackage_repository) {
     $this->composerJson = $composerJson;
     $this->composerLock = $composerLock;
     $this->gitObject = $gitObject;
+    $this->config = $config;
+    $this->metapackage_repository = $metapackage_repository;
 
     if ($this->gitObject instanceof Branch) {
       $this->referenceName = str_replace('origin/', '', $this->gitObject->getName());
