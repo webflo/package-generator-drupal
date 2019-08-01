@@ -29,7 +29,7 @@ class DrupalCoreRequireDevBuilder extends DrupalPackageBuilder {
 
     // The relevant require-dev constraints are stored in core/composer.json until Drupal 8.8.x,
     // where they moved to the root composer.json.
-    foreach ($composerJsonPath in ['/core/composer.json', '/composer.json']) {
+    foreach (['/core/composer.json', '/composer.json'] as $composerJsonPath) {
       $path = $this->gitObject->getRepository()
           ->getPath() . $composerJsonPath;
       if (file_exists($path)) {
