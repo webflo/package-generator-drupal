@@ -16,13 +16,15 @@ class DrupalCoreStrictBuilder extends DrupalPackageBuilder {
 
     if (isset($this->composerLock['packages'])) {
       foreach ($this->composerLock['packages'] as $package) {
-        $composer['require'][$package['name']] = $this->packageToVersion($package);
+        $name = strtolower($package['name']);
+        $composer['require'][$name] = $this->packageToVersion($package);
       }
     }
 
     if (isset($this->composerLock['packages-dev'])) {
       foreach ($this->composerLock['packages-dev'] as $package) {
-        $composer['require-dev'][$package['name']] = $this->packageToVersion($package);
+        $name = strtolower($package['name']);
+        $composer['require-dev'][$name] = $this->packageToVersion($package);
       }
     }
 
