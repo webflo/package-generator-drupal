@@ -7,8 +7,14 @@
             "email": "florian.weber@ueberbit.de"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/greg-1-anderson/package-generator"
+        }
+    ],
     "require": {
-        "webflo/package-generator": "dev-master"
+        "webflo/package-generator": "dev-repository-reference"
     },
     "autoload":{
         "psr-4":{

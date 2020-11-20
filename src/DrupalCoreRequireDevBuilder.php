@@ -7,15 +7,8 @@ use Gitonomy\Git\Reference\Tag;
 
 class DrupalCoreRequireDevBuilder extends DrupalPackageBuilder {
 
-  protected $defaultMetadata = [
-    'name' => 'webflo/drupal-core-require-dev',
-    'type' => 'metapackage',
-    'description' => 'require-dev dependencies from drupal/core',
-    'license' => 'GPL-2.0-or-later',
-  ];
-
   public function getPackage() {
-    $composer = $this->defaultMetadata;
+    $composer =  $this->config['composer']['metadata'];
     $constraint = NULL;
     if ($this->gitObject instanceof Branch) {
       $constraint = str_replace('origin/', '', $this->gitObject->getName()) . '-dev';
